@@ -1,0 +1,29 @@
+CREATE TABLE stations (
+	id SERIAL PRIMARY KEY,
+	name TEXT NOT NULL,
+	zone INTEGER NOT NULL,
+	number_of_station INTEGER NOT NULL
+);
+
+CREATE TABLE train_table (
+	start_station INTEGER REFERENCES stations(id),
+	finish_station INTEGER REFERENCES stations(id),
+);
+
+CREATE TABLE not_stopped_stations (
+	station INTEGER REFERENCES stations(id)
+);
+
+CREATE TABLE station_time (
+	station INTEGER REFERENCES stations(id),
+	time TIME NOT NULL
+);
+
+CREATE TABLE days_of_the_week (
+	day INTEGER NOT NULL
+);
+
+CREATE TABLE ticket_price (
+	zones INTEGER,
+	price INTEGER
+);
